@@ -89,12 +89,12 @@ public class AdapterGerenciarPontos extends BaseAdapter {
 
                 imagem.setImageResource(R.drawable.help);
             }
-
+            */
             return view;
         }catch (Exception e){
             Log.e("POKEDEX", "ERRO: " + e.getMessage());
             return null;
-        }*/
+        }
     }
 
 }
