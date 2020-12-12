@@ -1,0 +1,148 @@
+package android.lucamps.controledefidelidade.Util;
+
+/**
+ * Created by Lucas on 12/12/2016.
+ */
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
+
+import android.lucamps.controledefidelidade.R;
+
+public final class BancoDadosSingleton {
+
+    protected SQLiteDatabase db;
+    private final String NOME_BANCO = "controle_fidelidade_bd";
+    private static final android.lucamps.controledefidelidade.Util.BancoDadosSingleton INSTANCE = new android.lucamps.controledefidelidade.Util.BancoDadosSingleton();
+
+    private final String[] SCRIPT_DATABASE_CREATE = new String[] {
+            "CREATE TABLE cliente (" +
+                    "  idCliente INTEGER PRIMARY KEY," +
+                    "  nome TEXT NOT NULL," +
+                    "  email TEXT NOT NULL," +
+                    "  cpf TEXT NOT NULL," +
+                    "  senha TEXT NOT NULL," +
+                    "  telefone TEXT NOT NULL," +
+                    "  endereco TEXT NOT NULL," +
+                    "  foto INTEGER," +
+                    "  dataNascimento TEXT" + // relacionamento com Doce
+                    ");",
+
+            "INSERT INTO cliente (idCliente, nome, email, cpf, senha, telefone, endereco, foto, dataNascimento, idPontos) VALUES" +
+                    /*"(1, 'Fulano da Silva', 'fulano@gmail.com', '12457862121', '#bjadjkdabjs','3138917070',"+ R.drawable.i1+", '21/02/1987')," +*/
+                    "(2, 'Nilson', 'nilson@gmail.com', '34512412455', 'dasd1sa6452','3138917070', null, '21/02/1987')," +
+                    "(3, 'Daniela', 'daniela@gmail.com', '45414212451', 'sd56adsdsasd','3138917070', null, '21/02/1987')," +
+                    "(4, 'Lucas', 'lucas@gmail.com', '55414212451', 'sd56adsdsasd','3138917070', null, '21/02/1987');",
+
+            "CREATE TABLE empresa (" +
+                    "  idEmpresa INTEGER PRIMARY KEY," +
+                    "  nome TEXT NOT NULL," +
+                    "  email TEXT NOT NULL," +
+                    "  cpf TEXT NOT NULL," +
+                    "  senha TEXT NOT NULL," +
+                    "  telefone TEXT," +
+                    "  endereco TEXT NOT NULL," +
+                    "  redesSociais TEXT," +
+                    "  inadimplente INTEGER NOT NULL" +
+                    ");",
+            "CREATE TABLE pontos (" +
+                    "  idCliente INTEGER NOT NULL," +
+                    "  idEmpresa INTEGER NOT NULL," +
+                    "  pontosTotal INTEGER NOT NULL," +
+                    "  pontosResgatados INTEGER NOT NULL," +
+                    "  PRIMARY KEY (idCliente,idEmpresa)," +
+                    "  CONSTRAINT fk_pontos_cliente FOREIGN KEY (idCliente) REFERENCES cliente (idCliente)," +
+                    "  CONSTRAINT fk_pontos_empresa FOREIGN KEY (idEmpresa) REFERENCES empresa (idEmpresa)" +
+                    ");",
+
+            "CREATE TABLE codigopontos (" +
+                    "  idCodigo INTEGER PRIMARY KEY," +
+                    "  pontos INTEGER NOT NULL," +
+                    "  validado INTEGER NOT NULL," +
+                    "  pontosResgatados INTEGER NOT NULL," +
+                    "  idEmpresa INTEGER NOT NULL," +
+                    "  CONSTRAINT fk_codigo_empresa FOREIGN KEY (idEmpresa) REFERENCES empresa (idEmpresa)" +
+                    ");"};
+
+    private BancoDadosSingleton() {
+        Context ctx = MyApp.getAppContext();
+        // Abre o banco de dados já existente ou então cria um banco novo
+        db = ctx.openOrCreateDatabase(NOME_BANCO, Context.MODE_PRIVATE, null);
+
+        //busca por tabelas existentes no banco = "show tables" do MySQL
+        //SELECT * FROM sqlite_master WHERE type = "table"
+        Cursor c = buscar("sqlite_master", null, "type = 'table'", "");
+
+        //Cria tabelas do banco de dados caso o mesmo estiver vazio.
+        //Sempre os bancos criados pelo método openOrCreateDatabase() possuem uma tabela padrão "android_metadata"
+        if(c.getCount() == 1){
+            for(int i = 0; i < SCRIPT_DATABASE_CREATE.length; i++){
+                db.execSQL(SCRIPT_DATABASE_CREATE[i]);
+            }
+            Log.i("BANCO_DADOS", "Criou tabelas do banco e as populou.");
+        }
+
+        c.close();
+        Log.i("BANCO_DADOS", "Abriu conexão com o banco.");
+    }
+
+    public static android.lucamps.controledefidelidade.Util.BancoDadosSingleton getInstance(){
+        return INSTANCE;
+    }
+
+    // Insere um novo registro
+    public long inserir(String tabela, ContentValues valores) {
+        long id = db.insert(tabela, null, valores);
+
+        Log.i("BANCO_DADOS", "Cadastrou registro com o id [" + id + "]");
+        return id;
+    }
+
+    // Atualiza registros
+    public int atualizar(String tabela, ContentValues valores, String where) {
+        int count = db.update(tabela, valores, where, null);
+
+        Log.i("BANCO_DADOS", "Atualizou [" + count + "] registros");
+        return count;
+    }
+
+    // Deleta registros
+    public int deletar(String tabela, String where) {
+        int count = db.delete(tabela, where, null);
+
+        Log.i("BANCO_DADOS", "Deletou [" + count + "] registros");
+        return count;
+    }
+
+    // Busca registros
+    public Cursor buscar(String tabela, String colunas[], String where, String orderBy) {
+        Cursor c;
+        if(!where.equals(""))
+            c = db.query(tabela, colunas, where, null, null, null, orderBy);
+        else
+            c = db.query(tabela, colunas, null, null, null, null, orderBy);
+
+        Log.i("BANCO_DADOS", "Realizou uma busca e retornou [" + c.getCount() + "] registros.");
+        return c;
+    }
+
+    // Abre conexão com o banco
+    public void abrir() {
+        Context ctx = MyApp.getAppContext();
+        // Abre o banco de dados já existente
+        db = ctx.openOrCreateDatabase(NOME_BANCO, Context.MODE_PRIVATE, null);
+        Log.i("BANCO_DADOS", "Abriu conexão com o banco.");
+    }
+
+    // Fecha o banco
+    public void fechar() {
+        // fecha o banco de dados
+        if (db != null) {
+            db.close();
+            Log.i("BANCO_DADOS", "Fechou conexão com o Banco.");
+        }
+    }
+}
