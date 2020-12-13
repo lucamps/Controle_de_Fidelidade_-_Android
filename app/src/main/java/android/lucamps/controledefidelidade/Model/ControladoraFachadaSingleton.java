@@ -1,24 +1,11 @@
 package android.lucamps.controledefidelidade.Model;
 
-import android.content.ContentValues;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.lucamps.controledefidelidade.Util.BancoDadosSingleton;
-import android.lucamps.controledefidelidade.Util.MyApp;
-import android.util.Log;
-import android.util.Pair;
-import android.widget.Toast;
 
-import java.lang.reflect.Array;
+import android.database.Cursor;
+import android.lucamps.controledefidelidade.Util.BancoDadosSingleton;
+import android.util.Pair;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
 
 public class ControladoraFachadaSingleton {
     private ArrayList<Cliente> clientes;

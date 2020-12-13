@@ -1,8 +1,5 @@
 package android.lucamps.controledefidelidade.Util;
 
-/**
- * Created by Lucas on 12/12/2016.
- */
 
 import android.content.ContentValues;
 import android.content.Context;
