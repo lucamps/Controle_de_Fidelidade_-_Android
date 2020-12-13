@@ -25,7 +25,7 @@ public final class BancoDadosSingleton {
                     "  telefone TEXT NOT NULL," +
                     "  endereco TEXT NOT NULL," +
                     "  foto TEXT," +
-                    "  dataNascimento TEXT" + // relacionamento com Doce
+                    "  dataNascimento TEXT" +
                     ");",
 
             "INSERT INTO cliente (idCliente, nome, email, cpf, senha, telefone, endereco, foto, dataNascimento) VALUES" +
@@ -85,6 +85,7 @@ public final class BancoDadosSingleton {
                     "  pontos INTEGER NOT NULL," +
                     "  validado INTEGER NOT NULL," +
                     "  idEmpresa INTEGER NOT NULL," +
+                    "  metodo TEXT NOT NULL," +
                     "  CONSTRAINT fk_codigo_empresa FOREIGN KEY (idEmpresa) REFERENCES empresa (idEmpresa)" +
                     ");"};
 

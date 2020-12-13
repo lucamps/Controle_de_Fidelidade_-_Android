@@ -5,9 +5,21 @@ import java.util.Random;
 public class CodigoDePontos {
     private String codigo;
     private Empresa empresa;
-    private int validado = 0;
     private String dataGeracao;
-    private int pontos;
+
+    private int idCodigo;
+    private int pontos = 0;
+    private boolean validado = false;
+    private int idEmpresa;
+    String metodo;
+
+    CodigoDePontos(int idCodigo,int pontos,int validado, int idEmpresa, String metodo){
+        this.idCodigo = idCodigo;
+        this.pontos = pontos;
+        this.validado = (validado == 1);
+        this.idEmpresa = idEmpresa;
+        this.metodo = metodo;
+    }
 
     CodigoDePontos(Empresa empresa, float valor, String data, ConversaoStrategy strategy) {
         this.empresa = empresa;
@@ -44,7 +56,7 @@ public class CodigoDePontos {
         return codigo;
     }
 
-    public int getValidado() {
+    public boolean getValidado() {
         return validado;
     }
 }

@@ -90,23 +90,23 @@ public class ControladoraFachadaSingleton {
         }
         return null;
     }
-   /* private void daoCodigoDePontos(){
+    private void daoCodigoDePontos(){
         cdp = new ArrayList<CodigoDePontos>();
-        Cursor c = BancoDadosSingleton.getInstance().buscar("codigopontos",new String[]{"idCodigo","pontos","validado","idEmpresa"},"","");
+        Cursor c = BancoDadosSingleton.getInstance().buscar("codigopontos",new String[]{"idCodigo","pontos","validado","idEmpresa","metodo"},"","");
 
         while(c.moveToNext()){
             int idCodigo = c.getColumnIndex("idCodigo");
             int pontos = c.getColumnIndex("pontos");
             int validado = c.getColumnIndex("validado");
             int idEmpresa = c.getColumnIndex("idEmpresa");
+            int metodo = c.getColumnIndex("metodo");
 
-            CodigoDePontos c = new CodigoDePontos()
-            Pontos ponto = new Pontos(new Pair<Integer, Integer>(c.getInt(idCliente),c.getInt(idEmpresa)),c.getInt(pontosTotal),c.getInt(pontosResgatados));
-            pontos.add(ponto);
+            CodigoDePontos cod = new CodigoDePontos(c.getInt(idCodigo),c.getInt(pontos),c.getInt(validado),c.getInt(idEmpresa),c.getString(metodo));
+            cdp.add(cod);
         }
 
         c.close();
-    }*/
+    }
 
     public ArrayList<Cliente> getClientes() {
         return clientes;
