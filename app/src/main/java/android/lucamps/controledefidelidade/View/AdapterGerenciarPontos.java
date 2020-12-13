@@ -1,6 +1,7 @@
 package android.lucamps.controledefidelidade.View;
 
 import android.app.Activity;
+import android.lucamps.controledefidelidade.Model.ControladoraFachadaSingleton;
 import android.lucamps.controledefidelidade.Model.Pontos;
 import android.lucamps.controledefidelidade.R;
 import android.util.Log;
@@ -52,47 +53,23 @@ public class AdapterGerenciarPontos extends BaseAdapter {
 
             Pontos pnt = pontos.get(position);
 
-           // Log.i("POKEDEX", "Montando lista pokedex para " + pkmn.getNome());
-
-            TextView nomeEmpresa = (TextView)
-                    view.findViewById(R.id.txtNomeEmpresa);
+            /*TextView nomeEmpresa = (TextView)
+                    view.findViewById(R.id.txtNomeEmpresa);*/
             TextView pontosObtidos = (TextView)
                     view.findViewById(R.id.txtPontosObtidos);
             TextView pontosResgatados = (TextView)
                     view.findViewById(R.id.txtPontosResgatados);
-            ImageView imagem = (ImageView)
-                    view.findViewById(R.id.imagemEmpresa);
+            /*ImageView imagem = (ImageView)
+                    view.findViewById(R.id.imagemEmpresa);*/
 
-            //Decide se vai ter informações do pokemon ou não
-           /* if(ControladoraFachadaSingleton.getInstance().getUsuario().getQuantidadeCapturas(pkmn) > 0) {
-                nomePokemon.setText(pkmn.getNome());
+            //nomeEmpresa.setText(pnt.getIdCliente());
+            pontosObtidos.setText("" +pnt.getPontosTotal());
+            pontosResgatados.setText(""+pnt.getPontosResgatados());
+            //imagem.setImageResource(R.drawable.ic_foto_padrao);
 
-                //ajusta o visual do número acrescendo zeros ao lado
-                if(pkmn.getNumero() < 10)
-                    numeroPokemon.setText("#00"+pkmn.getNumero());
-                else if(pkmn.getNumero() < 100)
-                    numeroPokemon.setText("#0"+pkmn.getNumero());
-                else
-                    numeroPokemon.setText("#" + pkmn.getNumero());
-
-                imagem.setImageResource(pkmn.getIcone());
-            }else {
-                nomePokemon.setText("???");
-
-                //ajusta o visual do número acrescendo zeros ao lado
-                if(pkmn.getNumero() < 10)
-                    numeroPokemon.setText("#00"+pkmn.getNumero());
-                else if(pkmn.getNumero() < 100)
-                    numeroPokemon.setText("#0"+pkmn.getNumero());
-                else
-                    numeroPokemon.setText("#"+pkmn.getNumero());
-
-                imagem.setImageResource(R.drawable.help);
-            }
-            */
             return view;
         }catch (Exception e){
-            Log.e("POKEDEX", "ERRO: " + e.getMessage());
+            Log.e("LISTA", "ERRO: " + e.getMessage());
             return null;
         }
     }

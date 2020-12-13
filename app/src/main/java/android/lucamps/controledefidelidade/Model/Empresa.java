@@ -1,11 +1,13 @@
 package android.lucamps.controledefidelidade.Model;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 public class Empresa {
+    private int idEmpresa;
     private String nome;
     private String email;
-    private String cpf = "";
     private String cnpj = "";
     private String endereco;
     private String senha;
@@ -14,10 +16,10 @@ public class Empresa {
     private boolean pontoGasto = false;
     private float pontoArbitrario = (float) 0.0;
     private String telefone; // opcional
-    private ArrayList<String> redesSocias; //opcional
-    private boolean inadimplente = false;
+    private ArrayList<String> redesSociais; //opcional
+    private int inadimplente = 0;
 
-    public boolean getInadimplente() {
+    public int getInadimplente() {
         return inadimplente;
     }
 
@@ -33,15 +35,16 @@ public class Empresa {
         return pontoArbitrario;
     }
 
-    public Empresa(String n, String e, String cpf, String cnpj, String end, String s, String logo) {
+    public Empresa(int idEmpresa,String n, String e, String cnpj, String s, String end, String logo, int inadimplente) {
+        this.idEmpresa = idEmpresa;
         nome = n;
         email = e;
         endereco = end;
         senha = s;
         this.logo = logo;
         this.cnpj = cnpj;
-        this.cpf = cpf;
-
+        this.inadimplente = inadimplente;
+        redesSociais = new ArrayList<>();
         // como vai definir o método de conversão?
     }
 
@@ -55,10 +58,6 @@ public class Empresa {
 
     public String getSenha() {
         return senha;
-    }
-
-    public String getCPF() {
-        return cpf;
     }
 
     public String getCNPJ() {
@@ -78,15 +77,26 @@ public class Empresa {
     }
 
     public void addRedeSocial(String redeSocial) {
-        for(String rs : redesSocias) {
-            if(rs == redeSocial) {
+        for(String rs : redesSociais) {
+            if(rs.equals(redeSocial)) {
                 return;
             }
         }
 
-        redesSocias.add(redeSocial);
+        redesSociais.add(redeSocial);
     }
 
+    public void setRedesSociais(String texto){
+        try {
+            String[] redesSociais = texto.split(";");
+            for(String i: redesSociais)
+                addRedeSocial(i);
+        }
+        catch (Exception e){
+            Log.e("REDES_SOCIAIS", e.getMessage());
+        }
+
+    }
     public void setNome(String novo) {
         nome = novo;
     }

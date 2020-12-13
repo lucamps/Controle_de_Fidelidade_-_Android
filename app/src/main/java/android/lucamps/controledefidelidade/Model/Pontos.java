@@ -5,7 +5,7 @@ import android.util.Pair;
 public class Pontos {
     private Pair<Integer, Integer> idGeral; // idCliente, idEmpresa
     private int pontosTotal;
-    private  int pontosResgatados;
+    private int pontosResgatados;
 
     public Pontos(){
         idGeral = new Pair<Integer,Integer>(0,0);

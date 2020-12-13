@@ -5,7 +5,7 @@ import java.util.Random;
 public class CodigoDePontos {
     private String codigo;
     private Empresa empresa;
-    private boolean validado = false;
+    private int validado = 0;
     private String dataGeracao;
     private int pontos;
 
@@ -44,7 +44,7 @@ public class CodigoDePontos {
         return codigo;
     }
 
-    public boolean getValidado() {
+    public int getValidado() {
         return validado;
     }
 }

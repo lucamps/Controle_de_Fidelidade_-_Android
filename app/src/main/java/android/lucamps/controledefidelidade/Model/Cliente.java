@@ -1,6 +1,7 @@
 package android.lucamps.controledefidelidade.Model;
 
 public class Cliente {
+    private int idCliente;
     private String nome;
     private String email;
     private String senha;
@@ -10,7 +11,16 @@ public class Cliente {
     private String data_nasc = ""; // opcional
     private String foto = ""; // opcional
 
-    public Cliente(String nome, String email, String cpf, String senha, String tel, String end) {
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public Cliente(int idCliente, String nome, String email, String cpf, String senha, String tel, String end) {
+        this.idCliente = idCliente;
         this.nome = nome;
         this.email = email;
         this.cpf = cpf;

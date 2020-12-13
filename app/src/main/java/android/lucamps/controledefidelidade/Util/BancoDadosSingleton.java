@@ -16,7 +16,7 @@ public final class BancoDadosSingleton {
 
     protected SQLiteDatabase db;
     private final String NOME_BANCO = "controle_fidelidade_bd";
-    private static final android.lucamps.controledefidelidade.Util.BancoDadosSingleton INSTANCE = new android.lucamps.controledefidelidade.Util.BancoDadosSingleton();
+    private static final BancoDadosSingleton INSTANCE = new BancoDadosSingleton();
 
     private final String[] SCRIPT_DATABASE_CREATE = new String[] {
             "CREATE TABLE cliente (" +
@@ -27,27 +27,34 @@ public final class BancoDadosSingleton {
                     "  senha TEXT NOT NULL," +
                     "  telefone TEXT NOT NULL," +
                     "  endereco TEXT NOT NULL," +
-                    "  foto INTEGER," +
+                    "  foto TEXT," +
                     "  dataNascimento TEXT" + // relacionamento com Doce
                     ");",
 
-            "INSERT INTO cliente (idCliente, nome, email, cpf, senha, telefone, endereco, foto, dataNascimento, idPontos) VALUES" +
-                    /*"(1, 'Fulano da Silva', 'fulano@gmail.com', '12457862121', '#bjadjkdabjs','3138917070',"+ R.drawable.i1+", '21/02/1987')," +*/
-                    "(2, 'Nilson', 'nilson@gmail.com', '34512412455', 'dasd1sa6452','3138917070', null, '21/02/1987')," +
-                    "(3, 'Daniela', 'daniela@gmail.com', '45414212451', 'sd56adsdsasd','3138917070', null, '21/02/1987')," +
-                    "(4, 'Lucas', 'lucas@gmail.com', '55414212451', 'sd56adsdsasd','3138917070', null, '21/02/1987');",
+            "INSERT INTO cliente (idCliente, nome, email, cpf, senha, telefone, endereco, foto, dataNascimento) VALUES" +
+                    "(1, 'Fulano da Silva', 'fulano@gmail.com', '12457862121', '#bjadjkdabjs','3138917070','Rua Sei La, num 1000',"+ R.drawable.ic_foto_padrao+", '21/02/1987')," +
+                    "(2, 'Nilson', 'nilson@gmail.com', '34512412455', 'dasd1sa6452','3138917070', 'Rua Sei La, num 1000',"+ R.drawable.ic_foto_padrao+", '21/02/1987')," +
+                    "(3, 'Daniela', 'daniela@gmail.com', '45414212451', 'sd56adsdsasd','3138917070', 'Rua Sei La, num 1000',"+ R.drawable.ic_foto_padrao+", '21/02/1987')," +
+                    "(4, 'Lucas', 'lucas@gmail.com', '55414212451', 'sd56adsdsasd','3138917070', 'Rua Sei La, num 1000',"+ R.drawable.ic_foto_padrao+", '21/02/1987');",
 
             "CREATE TABLE empresa (" +
-                    "  idEmpresa INTEGER PRIMARY KEY," +
+                    "  idEmpresa INTEGER PRIMARY KEY ," +
                     "  nome TEXT NOT NULL," +
                     "  email TEXT NOT NULL," +
-                    "  cpf TEXT NOT NULL," +
+                    "  cnpj TEXT NOT NULL," +
                     "  senha TEXT NOT NULL," +
                     "  telefone TEXT," +
                     "  endereco TEXT NOT NULL," +
+                    "  foto TEXT NOT NULL," +
                     "  redesSociais TEXT," +
-                    "  inadimplente INTEGER NOT NULL" +
+                    "  inadimplente INTEGER NOT NULL DEFAULT 0" +
                     ");",
+
+            "INSERT INTO empresa (idEmpresa, nome, email, cnpj, senha, telefone, endereco, foto, redesSociais, inadimplente) VALUES" +
+                    "(1, 'Empresa 1', 'fulano1@gmail.com', '12457862121', '#bjadjkd1bjs','3138917170','Rua Tal num 440','FAZER_DEPOIS', '@empresa1',0)," +
+                    "(2, 'Empresa 2', 'fulano2@gmail.com', '12457562121', '#bjadjk2bjs','3138917070','Rua Tal num 150','FAZER_DEPOIS', '@empresa1',0)," +
+                    "(3, 'Empresa 3', 'fulano3@gmail.com', '12457812121', '#bjadj2kdabjs','3138911070','Rua Tal num 1140','FAZER_DEPOIS', '@empresa1',0)",
+
             "CREATE TABLE pontos (" +
                     "  idCliente INTEGER NOT NULL," +
                     "  idEmpresa INTEGER NOT NULL," +
@@ -58,11 +65,15 @@ public final class BancoDadosSingleton {
                     "  CONSTRAINT fk_pontos_empresa FOREIGN KEY (idEmpresa) REFERENCES empresa (idEmpresa)" +
                     ");",
 
+            "INSERT INTO pontos (idCliente, idEmpresa, pontosTotal, pontosResgatados) VALUES" +
+                    "(2, 1, 1510, 124)," +
+                    "(2, 2, 1610, 14)," +
+                    "(2, 3, 1710, 24)",
+
             "CREATE TABLE codigopontos (" +
                     "  idCodigo INTEGER PRIMARY KEY," +
                     "  pontos INTEGER NOT NULL," +
                     "  validado INTEGER NOT NULL," +
-                    "  pontosResgatados INTEGER NOT NULL," +
                     "  idEmpresa INTEGER NOT NULL," +
                     "  CONSTRAINT fk_codigo_empresa FOREIGN KEY (idEmpresa) REFERENCES empresa (idEmpresa)" +
                     ");"};
@@ -89,7 +100,7 @@ public final class BancoDadosSingleton {
         Log.i("BANCO_DADOS", "Abriu conexão com o banco.");
     }
 
-    public static android.lucamps.controledefidelidade.Util.BancoDadosSingleton getInstance(){
+    public static BancoDadosSingleton getInstance(){
         return INSTANCE;
     }
 

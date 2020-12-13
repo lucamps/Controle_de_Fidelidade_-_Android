@@ -3,18 +3,40 @@ package android.lucamps.controledefidelidade.Controller;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.lucamps.controledefidelidade.Model.ControladoraFachadaSingleton;
+import android.lucamps.controledefidelidade.Model.Pontos;
 import android.lucamps.controledefidelidade.R;
 import android.lucamps.controledefidelidade.Util.ActionBarUtil;
+import android.lucamps.controledefidelidade.View.AdapterGerenciarPontos;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.widget.AdapterView;
+import android.widget.ListView;
+
+import java.util.List;
 
 public class GerenciarPontosActivity extends AppCompatActivity {
-
+    private List<Pontos> pontos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gerenciar_pontos);
         ActionBarUtil.configureActionBar(this);
+
+        try{
+            //Prepara a listview customizada de pontos
+            pontos = ControladoraFachadaSingleton.getInstance().getPontos();
+            ListView listView = (ListView) findViewById(R.id.lista_de_pontos);
+
+            AdapterGerenciarPontos adapter = new AdapterGerenciarPontos(pontos, this);
+            listView.setAdapter(adapter);
+            //listView.setOnItemClickListener(this);
+        }
+        catch (Exception e){
+            Log.e("PONTOS",e.getMessage());
+        }
+
     }
 
     @Override
