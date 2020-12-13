@@ -51,9 +51,16 @@ public final class BancoDadosSingleton {
                     ");",
 
             "INSERT INTO empresa (idEmpresa, nome, email, cnpj, senha, telefone, endereco, foto, redesSociais, inadimplente) VALUES" +
-                    "(1, 'Empresa 1', 'fulano1@gmail.com', '12457862121', '#bjadjkd1bjs','3138917170','Rua Tal num 440','FAZER_DEPOIS', '@empresa1',0)," +
-                    "(2, 'Empresa 2', 'fulano2@gmail.com', '12457562121', '#bjadjk2bjs','3138917070','Rua Tal num 150','FAZER_DEPOIS', '@empresa1',0)," +
-                    "(3, 'Empresa 3', 'fulano3@gmail.com', '12457812121', '#bjadj2kdabjs','3138911070','Rua Tal num 1140','FAZER_DEPOIS', '@empresa1',0)",
+                    "(1, 'Empresa Aleatória', 'fulano1@gmail.com', '12457862121', '#bjadjkd1bjs','3138917170','Rua Tal num 440','FAZER_DEPOIS', '@empresa1',0)," +
+                    "(2, 'Bar do Fulano de Tal', 'fulano2@gmail.com', '12457562121', '#bjadjk2bjs','3138917070','Rua Tal num 150','FAZER_DEPOIS', '@empresa1',0)," +
+                    "(3, 'Janaina\''s Coffe', 'fulano2@gmail.com', '12457562121', '#bjadjk2bjs','3138917070','Rua Tal num 150','FAZER_DEPOIS', '@empresa1',0)," +
+                    "(4, 'Outra Empresa Aleatória', 'fulano2@gmail.com', '12457562121', '#bjadjk2bjs','3138917070','Rua Tal num 150','FAZER_DEPOIS', '@empresa1',0)," +
+                    "(5, 'Churrascaria Lorem Ipsum', 'fulano2@gmail.com', '12457562121', '#bjadjk2bjs','3138917070','Rua Tal num 150','FAZER_DEPOIS', '@empresa1',0)," +
+                    "(6, 'Sweet Doces', 'fulano2@gmail.com', '12457562121', '#bjadjk2bjs','3138917070','Rua Tal num 150','FAZER_DEPOIS', '@empresa1',0)," +
+                    "(7, 'Fliperama do João', 'fulano2@gmail.com', '12457562121', '#bjadjk2bjs','3138917070','Rua Tal num 150','FAZER_DEPOIS', '@empresa1',0)," +
+                    "(8, 'Papelaria Central', 'fulano2@gmail.com', '12457562121', '#bjadjk2bjs','3138917070','Rua Tal num 150','FAZER_DEPOIS', '@empresa1',0)," +
+                    "(9, 'Açougue do Zé', 'fulano2@gmail.com', '12457562121', '#bjadjk2bjs','3138917070','Rua Tal num 150','FAZER_DEPOIS', '@empresa1',0)," +
+                    "(10, 'Loja Criatividade LDTA', 'fulano3@gmail.com', '12457812121', '#bjadj2kdabjs','3138911070','Rua Tal num 1140','FAZER_DEPOIS', '@empresa1',0)",
 
             "CREATE TABLE pontos (" +
                     "  idCliente INTEGER NOT NULL," +
@@ -67,8 +74,14 @@ public final class BancoDadosSingleton {
 
             "INSERT INTO pontos (idCliente, idEmpresa, pontosTotal, pontosResgatados) VALUES" +
                     "(2, 1, 1510, 124)," +
-                    "(2, 2, 1610, 14)," +
-                    "(2, 3, 1710, 24)",
+                    "(2, 2, 515691, 5151)," +
+                    "(2, 3, 4441, 445)," +
+                    "(2, 4, 14144, 545)," +
+                    "(2, 5, 1000, 10)," +
+                    "(2, 6, 1600, 5)," +
+                    "(2, 7, 1200, 50)," +
+                    "(2, 8, 500, 40)," +
+                    "(2, 10, 1800, 90)",
 
             "CREATE TABLE codigopontos (" +
                     "  idCodigo INTEGER PRIMARY KEY," +

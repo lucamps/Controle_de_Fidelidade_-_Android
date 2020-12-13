@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.lucamps.controledefidelidade.Model.ControladoraFachadaSingleton;
 import android.lucamps.controledefidelidade.Model.Pontos;
 import android.lucamps.controledefidelidade.R;
+import android.lucamps.controledefidelidade.Util.BancoDadosSingleton;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,19 +54,19 @@ public class AdapterGerenciarPontos extends BaseAdapter {
 
             Pontos pnt = pontos.get(position);
 
-            /*TextView nomeEmpresa = (TextView)
-                    view.findViewById(R.id.txtNomeEmpresa);*/
+            TextView nomeEmpresa = (TextView)
+                    view.findViewById(R.id.txtNomeEmpresa);
             TextView pontosObtidos = (TextView)
                     view.findViewById(R.id.txtPontosObtidos);
             TextView pontosResgatados = (TextView)
                     view.findViewById(R.id.txtPontosResgatados);
-            /*ImageView imagem = (ImageView)
-                    view.findViewById(R.id.imagemEmpresa);*/
+            ImageView imagem = (ImageView)
+                    view.findViewById(R.id.imagemEmpresa);
 
-            //nomeEmpresa.setText(pnt.getIdCliente());
-            pontosObtidos.setText("" +pnt.getPontosTotal());
-            pontosResgatados.setText(""+pnt.getPontosResgatados());
-            //imagem.setImageResource(R.drawable.ic_foto_padrao);
+            nomeEmpresa.setText(ControladoraFachadaSingleton.getInstance().getNomeEmpresa(pnt.getIdEmpresa()));
+            pontosObtidos.setText("Pontos obtidos: "+ pnt.getPontosTotal());
+            pontosResgatados.setText("resgatados: "+ pnt.getPontosResgatados());
+            imagem.setImageResource(R.drawable.ic_foto_padrao);
 
             return view;
         }catch (Exception e){

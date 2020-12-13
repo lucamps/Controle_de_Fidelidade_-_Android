@@ -96,7 +96,13 @@ public class ControladoraFachadaSingleton {
 
         c.close();
     }
-
+    public String getNomeEmpresa(int id){
+        for(Empresa e : empresas){
+            if(e.getIdEmpresa() == id)
+                return e.getNome();
+        }
+        return null;
+    }
    /* private void daoCodigoDePontos(){
         cdp = new ArrayList<CodigoDePontos>();
         Cursor c = BancoDadosSingleton.getInstance().buscar("codigopontos",new String[]{"idCodigo","pontos","validado","idEmpresa"},"","");

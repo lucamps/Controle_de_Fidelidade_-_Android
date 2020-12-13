@@ -48,6 +48,14 @@ public class Empresa {
         // como vai definir o método de conversão?
     }
 
+    public int getIdEmpresa() {
+        return idEmpresa;
+    }
+
+    public void setIdEmpresa(int idEmpresa) {
+        this.idEmpresa = idEmpresa;
+    }
+
     public String getNome() {
         return nome;
     }
