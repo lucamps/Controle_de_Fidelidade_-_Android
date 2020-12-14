@@ -10,7 +10,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ControleDeFidelidade">
-        <activity android:name=".Controller.SelecionarUsuario"></activity>
+        <activity android:name=".Controller.ValidarActivity"
+            android:label="Validar Pontos"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Controller.SelecionarUsuario" />
         <activity
             android:name=".Controller.GerarPontosActivity"
             android:label="Gerar Pontos"

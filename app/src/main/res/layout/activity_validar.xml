@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Controller.ValidarActivity">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button2"
+            android:layout_below="@id/editTextValidar"
+            android:layout_centerHorizontal="true"
+            android:text="Validar"
+            android:textAllCaps="false"/>
+        <EditText
+            android:id="@+id/editTextValidar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="#333333"
+            android:hint="Digite o código de pontos obtido"/>
+    </RelativeLayout>
+
+
+</RelativeLayout>

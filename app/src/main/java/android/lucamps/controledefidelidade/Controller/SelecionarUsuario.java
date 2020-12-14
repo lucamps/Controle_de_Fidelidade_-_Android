@@ -47,8 +47,13 @@ public class SelecionarUsuario extends Activity implements AdapterView.OnItemCli
         try {
             //Click em um item da listView customizada
             Cliente cli = (Cliente) parent.getAdapter().getItem(position);
-
-            Intent it = new Intent(this,GerenciarPontosActivity.class);
+            Intent itAux = getIntent();
+            boolean validar = itAux.getBooleanExtra("validar",false);
+            Intent it;
+            if (validar)
+                it = new Intent(this,ValidarActivity.class);
+            else
+                it = new Intent(this,GerenciarPontosActivity.class);
             it.putExtra("cli", (Serializable) cli);
 
             startActivity(it);

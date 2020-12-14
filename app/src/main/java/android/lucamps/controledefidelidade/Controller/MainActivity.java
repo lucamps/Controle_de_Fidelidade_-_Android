@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button gerenciarBt = findViewById(R.id.buttonGerenciar);
         Button gerarBt = findViewById(R.id.buttonGerar);
+        Button validarBt = findViewById(R.id.buttonValidar);
 
         gerenciarBt.setOnClickListener(view -> {
             //Intent it = new Intent(getBaseContext(), GerenciarPontosActivity.class);
@@ -25,6 +26,13 @@ public class MainActivity extends AppCompatActivity {
 
         gerarBt.setOnClickListener(view -> {
             Intent it = new Intent(getBaseContext(), GerarPontosActivity.class);
+            startActivity(it);
+        });
+
+        validarBt.setOnClickListener(view -> {
+            //Intent it = new Intent(getBaseContext(), ValidarActivity.class);
+            Intent it = new Intent(getBaseContext(), SelecionarUsuario.class);
+            it.putExtra("validar",true);
             startActivity(it);
         });
 
