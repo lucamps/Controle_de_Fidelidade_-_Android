@@ -60,25 +60,27 @@ public final class BancoDadosSingleton {
                     "(10, 'Loja Criatividade LDTA', 'fulano3@gmail.com', '12457812121', '#bjadj2kdabjs','3138911070','Rua Tal num 1140','FAZER_DEPOIS', '@empresa1',0)",
 
             "CREATE TABLE pontos (" +
+                    "  idPontos INTEGER NOT NULL PRIMARY KEY," +
                     "  idCliente INTEGER NOT NULL," +
                     "  idEmpresa INTEGER NOT NULL," +
                     "  pontosTotal INTEGER NOT NULL," +
                     "  pontosResgatados INTEGER NOT NULL," +
-                    "  PRIMARY KEY (idCliente,idEmpresa)," +
                     "  CONSTRAINT fk_pontos_cliente FOREIGN KEY (idCliente) REFERENCES cliente (idCliente)," +
                     "  CONSTRAINT fk_pontos_empresa FOREIGN KEY (idEmpresa) REFERENCES empresa (idEmpresa)" +
                     ");",
 
-            "INSERT INTO pontos (idCliente, idEmpresa, pontosTotal, pontosResgatados) VALUES" +
-                    "(2, 1, 1510, 124)," +
-                    "(2, 2, 515691, 5151)," +
-                    "(2, 3, 4441, 445)," +
-                    "(2, 4, 14144, 545)," +
-                    "(2, 5, 1000, 10)," +
-                    "(2, 6, 1600, 5)," +
-                    "(2, 7, 1200, 50)," +
-                    "(2, 8, 500, 40)," +
-                    "(2, 10, 1800, 90)",
+            "INSERT INTO pontos (idPontos, idCliente, idEmpresa, pontosTotal, pontosResgatados) VALUES" +
+                    "(1, 1, 1, 10, 1)," +
+                    "(2, 1, 2, 210, 50)," +
+                    "(3, 1, 3, 4440, 545)," +
+                    "(4, 2, 4, 14144, 545)," +
+                    "(5, 2, 5, 1000, 10)," +
+                    "(6, 2, 6, 1600, 5)," +
+                    "(7, 2, 7, 1200, 50)," +
+                    "(8, 2, 8, 500, 40)," +
+                    "(9, 3, 9, 515691, 5151)," +
+                    "(10, 3, 10, 4441, 445)," +
+                    "(11, 4, 10, 1800, 90)",
 
             "CREATE TABLE codigopontos (" +
                     "  idCodigo INTEGER PRIMARY KEY," +

@@ -43,7 +43,7 @@ public class AdapterGerenciarPontos extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return pontos.get(position).getIdEmpresa();
+        return pontos.get(position).getIdPontos();
     }
 
     @Override

@@ -3,15 +3,21 @@ package android.lucamps.controledefidelidade.Model;
 import android.util.Pair;
 
 public class Pontos {
+    private int idPontos;
     private Pair<Integer, Integer> idGeral; // idCliente, idEmpresa
     private int pontosTotal;
     private int pontosResgatados;
+
+    public int getIdPontos() {
+        return idPontos;
+    }
 
     public Pontos(){
         idGeral = new Pair<Integer,Integer>(0,0);
     }
 
-    public Pontos(Pair<Integer,Integer> idGeral, int pontosTotal, int pontosResgatados) {
+    public Pontos(int idPontos,Pair<Integer,Integer> idGeral, int pontosTotal, int pontosResgatados) {
+        this.idPontos = idPontos;
         this.idGeral = idGeral;
         this.pontosTotal = pontosTotal;
         this.pontosResgatados = pontosResgatados;

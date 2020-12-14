@@ -71,15 +71,16 @@ public class ControladoraFachadaSingleton {
     }
     private void daoPontos(){
         pontos = new ArrayList<Pontos>();
-        Cursor c = BancoDadosSingleton.getInstance().buscar("pontos",new String[]{"idCliente","idEmpresa","pontosTotal","pontosResgatados"},"","");
+        Cursor c = BancoDadosSingleton.getInstance().buscar("pontos",new String[]{"idPontos","idCliente","idEmpresa","pontosTotal","pontosResgatados"},"","");
 
         while(c.moveToNext()){
+            int idPontos = c.getColumnIndex("idPontos");
             int idCliente = c.getColumnIndex("idCliente");
             int idEmpresa = c.getColumnIndex("idEmpresa");
             int pontosTotal = c.getColumnIndex("pontosTotal");
             int pontosResgatados = c.getColumnIndex("pontosResgatados");
 
-            Pontos ponto = new Pontos(new Pair<Integer, Integer>(c.getInt(idCliente),c.getInt(idEmpresa)),c.getInt(pontosTotal),c.getInt(pontosResgatados));
+            Pontos ponto = new Pontos(idPontos,new Pair<Integer, Integer>(c.getInt(idCliente),c.getInt(idEmpresa)),c.getInt(pontosTotal),c.getInt(pontosResgatados));
             pontos.add(ponto);
         }
 
