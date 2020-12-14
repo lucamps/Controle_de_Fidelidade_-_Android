@@ -58,7 +58,7 @@ public class SelecionarUsuario extends Activity implements AdapterView.OnItemCli
 
             startActivity(it);
         }catch (Exception e){
-            Log.e("POKEDEX", "ERRO no click: " + e.getMessage());
+            Log.e("ITEM_LISTA", "ERRO no click: " + e.getMessage());
         }
 
     }

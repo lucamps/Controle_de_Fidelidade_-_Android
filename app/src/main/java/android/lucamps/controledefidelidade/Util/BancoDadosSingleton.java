@@ -89,7 +89,19 @@ public final class BancoDadosSingleton {
                     "  idEmpresa INTEGER NOT NULL," +
                     "  metodo TEXT NOT NULL," +
                     "  CONSTRAINT fk_codigo_empresa FOREIGN KEY (idEmpresa) REFERENCES empresa (idEmpresa)" +
-                    ");"};
+                    ");",
+            "INSERT INTO codigopontos (idCodigo, pontos, validado, idEmpresa, metodo) VALUES" +
+                    "(1, 100, 1, 1, 'um ponto por compra')," +
+                    "(2, 200, 0, 2, 'um ponto por compra')," +
+                    "(3, 300, 0, 3, 'um ponto por compra')," +
+                    "(4, 50, 0, 4, 'um ponto por compra')," +
+                    "(5, 75, 0, 4, 'um ponto por compra')," +
+                    "(6, 150, 0, 5, 'um ponto por compra')," +
+                    "(7, 250, 0, 6, 'um ponto por compra')," +
+                    "(8, 500, 0, 7, 'um ponto por compra')," +
+                    "(9, 125, 0, 8, 'um ponto por compra')," +
+                    "(10, 245, 0, 9, 'um ponto por compra')," +
+                    "(11, 40, 0, 10, 'um ponto por compra')"};
 
     private BancoDadosSingleton() {
         Context ctx = MyApp.getAppContext();

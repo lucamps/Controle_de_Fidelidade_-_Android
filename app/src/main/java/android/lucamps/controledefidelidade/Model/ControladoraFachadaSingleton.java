@@ -157,6 +157,7 @@ public class ControladoraFachadaSingleton {
         daoCliente();
         daoEmpresa();
         daoPontos();
+        daoCodigoDePontos();
     }
 
     public static ControladoraFachadaSingleton getInstance(){
