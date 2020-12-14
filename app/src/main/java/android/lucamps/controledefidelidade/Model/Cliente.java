@@ -115,30 +115,5 @@ public class Cliente implements Serializable {
         }
     }
 
-    /*@Override
-    public int hashCode() {
-        //geração própria da hashCode para evitar colisão - objetos de classes diferentes com o mesmo hashCode
-        //evita também que NÃO se retorne o mesmo hashCode para o mesmo objeto
-        try {
-            int numPrimo = 17;
-            int hash = 1;
 
-            //TÉCNICA: somar os hashCodes de todos os atributos da classe e multiplicar por um número primo
-            hash = numPrimo * hash + ((this.nome == null) ? 0 : this.nome.hashCode());
-            hash = numPrimo * hash + ((this.categoria == null) ? 0 : this.categoria.hashCode());
-            hash = numPrimo * hash + (this.numero);
-            hash = numPrimo * hash + (this.foto);
-            hash = numPrimo * hash + (this.icone);
-            hash = numPrimo * hash + (this.tipos.get(0).getIdTipo());
-            hash = numPrimo * hash + ((this.tipos.get(0).getNome() == null) ? 0 : this.tipos.get(0).getNome().hashCode());
-            if (this.tipos.size() > 1){
-                hash = numPrimo * hash + (this.tipos.get(1).getIdTipo());
-                hash = numPrimo * hash + ((this.tipos.get(1).getNome() == null) ? 0 : this.tipos.get(1).getNome().hashCode());
-            }
-
-            return hash;
-        }catch (Exception e){
-            return super.hashCode();
-        }
-    }*/
 }

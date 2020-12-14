@@ -89,7 +89,7 @@ public class ValidarActivity extends AppCompatActivity {
             int valor = c.getInt(pontos);
             c.close();
 
-            somarPontos(valor);
+            //somarPontos(valor);
 
             return "Codigo validado!";
         }
