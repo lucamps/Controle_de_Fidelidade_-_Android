@@ -50,12 +50,13 @@ public class SelecionarUsuario extends Activity implements AdapterView.OnItemCli
             Intent itAux = getIntent();
             boolean validar = itAux.getBooleanExtra("validar",false);
             Intent it;
+
             if (validar)
                 it = new Intent(this,ValidarActivity.class);
             else
                 it = new Intent(this,GerenciarPontosActivity.class);
-            it.putExtra("cli", (Serializable) cli);
 
+            it.putExtra("cli", (Serializable) cli);
             startActivity(it);
         }catch (Exception e){
             Log.e("ITEM_LISTA", "ERRO no click: " + e.getMessage());
