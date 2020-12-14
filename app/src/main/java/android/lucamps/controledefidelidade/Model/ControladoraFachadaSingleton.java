@@ -4,6 +4,8 @@ package android.lucamps.controledefidelidade.Model;
 import android.database.Cursor;
 import android.lucamps.controledefidelidade.Util.BancoDadosSingleton;
 import android.util.Pair;
+import android.widget.AdapterView;
+
 import java.util.ArrayList;
 
 
@@ -86,6 +88,14 @@ public class ControladoraFachadaSingleton {
     public String getNomeEmpresa(int id){
         for(Empresa e : empresas){
             if(e.getIdEmpresa() == id)
+                return e.getNome();
+        }
+        return null;
+    }
+
+    public String getNomeCliente(int id){
+        for(Cliente e : clientes){
+            if(e.getIdCliente() == id)
                 return e.getNome();
         }
         return null;

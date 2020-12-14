@@ -18,7 +18,8 @@ public class MainActivity extends AppCompatActivity {
         Button gerarBt = findViewById(R.id.buttonGerar);
 
         gerenciarBt.setOnClickListener(view -> {
-            Intent it = new Intent(getBaseContext(), GerenciarPontosActivity.class);
+            //Intent it = new Intent(getBaseContext(), GerenciarPontosActivity.class);
+            Intent it = new Intent(getBaseContext(), SelecionarUsuario.class);
             startActivity(it);
         });
 
